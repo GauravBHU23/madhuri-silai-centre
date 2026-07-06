@@ -800,8 +800,10 @@ export default function Home() {
                     {b.tag}
                   </span>
                   {/* Stars */}
-                  <div className="absolute top-4 right-4 flex gap-0.5">
-                    {Array.from({length:5}).map((_, j) => <Icon key={j} name="star" size={10} color="#C9A84C"/>)}
+                  <div className="absolute top-4 right-4 flex items-center gap-0.5">
+                    {Array.from({length:5}).map((_, j) => (
+                      <span key={j} style={{ color: "#C9A84C", fontSize: "12px", lineHeight: 1 }}>★</span>
+                    ))}
                   </div>
                 </div>
 
@@ -951,8 +953,10 @@ export default function Home() {
               <div key={i} className="testimonial-card relative rounded-3xl p-7"
                 style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(201,168,76,0.22)", backdropFilter: "blur(12px)" }}>
                 {/* Stars */}
-                <div className="flex gap-1 mb-4">
-                  {Array.from({length: t.stars}).map((_, j) => <Icon key={j} name="star" size={14} color="#E8C97A"/>)}
+                <div className="flex items-center gap-0.5 mb-4">
+                  {Array.from({length: t.stars}).map((_, j) => (
+                    <span key={j} style={{ color: "#E8C97A", fontSize: "16px", lineHeight: 1 }}>★</span>
+                  ))}
                 </div>
                 <p className="text-sm leading-relaxed mb-6 italic" style={{ color: "rgba(255,255,255,0.8)" }}>
                   &ldquo;{t.text}&rdquo;
