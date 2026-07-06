@@ -1,26 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-maroon: #7B1A3A;
+  --color-maroon-dark: #5C1229;
+  --color-maroon-light: #9B2A4A;
+  --color-gold: #C9A84C;
+  --color-gold-light: #E8C97A;
+  --color-cream: #FFF8F0;
+  --color-blush: #FCF0F4;
+  --font-playfair: 'Playfair Display', serif;
+  --font-poppins: 'Poppins', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Only add truly custom properties — Tailwind preflight already resets margin/padding/box-sizing */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Decorative diamond pattern */
+.diamond-pattern {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(201, 168, 76, 0.05) 10px,
+    rgba(201, 168, 76, 0.05) 20px
+  );
+}
+
+/* Shimmer animation for gold elements */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #C9A84C, #E8C97A, #C9A84C, #E8C97A);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Floating WhatsApp button */
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-pulse {
+  animation: pulse-green 2s infinite;
+}
+
+/* Card hover effects */
+.service-card {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(123, 26, 58, 0.15);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF8F0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7B1A3A;
+  border-radius: 3px;
+}
+
+/* Section divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #C9A84C);
+}
+
+.section-divider::after {
+  background: linear-gradient(90deg, #C9A84C, transparent);
+}
+
+/* Splash screen animations */
+@keyframes splashLogo {
+  from { opacity: 0; transform: scale(0.4) translateY(24px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes splashText {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes loadBar {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes spinReverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+@keyframes splashFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 30px rgba(201,168,76,0.3); }
+  50%       { box-shadow: 0 0 60px rgba(201,168,76,0.7); }
+}
+@keyframes mainFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Chat typing dots */
+@keyframes typingDot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%           { transform: translateY(-6px); opacity: 1; }
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* Step number ring */
+.step-ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #C9A84C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #C9A84C;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+/* Testimonial card quote */
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 12px;
+  left: 18px;
+  font-size: 4rem;
+  color: #C9A84C;
+  opacity: 0.18;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
 }
