@@ -950,19 +950,23 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="testimonial-card relative rounded-3xl p-7"
+              <div key={i} className="flex flex-col gap-4 rounded-3xl p-6"
                 style={{ background: "rgba(255,255,255,0.08)", border: "1px solid rgba(201,168,76,0.22)", backdropFilter: "blur(12px)" }}>
-                {/* Stars */}
-                <div className="flex items-center gap-0.5 mb-4">
+                {/* Quote mark decorative */}
+                <span style={{ color: "#C9A84C", fontSize: "2.5rem", lineHeight: 1, opacity: 0.4, fontFamily: "serif" }}>&ldquo;</span>
+                {/* Review text */}
+                <p className="text-sm leading-relaxed italic flex-1" style={{ color: "rgba(255,255,255,0.85)", marginTop: "-12px" }}>
+                  {t.text}
+                </p>
+                {/* Stars row */}
+                <div className="flex items-center gap-1">
                   {Array.from({length: t.stars}).map((_, j) => (
-                    <span key={j} style={{ color: "#E8C97A", fontSize: "16px", lineHeight: 1 }}>★</span>
+                    <span key={j} style={{ color: "#E8C97A", fontSize: "18px", lineHeight: 1 }}>★</span>
                   ))}
                 </div>
-                <p className="text-sm leading-relaxed mb-6 italic" style={{ color: "rgba(255,255,255,0.8)" }}>
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm"
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-1" style={{ borderTop: "1px solid rgba(201,168,76,0.18)" }}>
+                  <div className="w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm shrink-0"
                     style={{ background: "linear-gradient(135deg, #C9A84C, #E8C97A)", color: "#3A0A1A" }}>
                     {t.name[0]}
                   </div>

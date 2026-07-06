@@ -194,15 +194,4 @@ body {
   z-index: 1;
 }
 
-/* Testimonial card quote */
-.testimonial-card::before {
-  content: '\201C';
-  position: absolute;
-  top: 12px;
-  left: 18px;
-  font-size: 4rem;
-  color: #C9A84C;
-  opacity: 0.18;
-  font-family: 'Playfair Display', serif;
-  line-height: 1;
-}
+/* Testimonial card quote — handled inline in JSX */
